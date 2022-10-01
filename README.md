@@ -9,3 +9,9 @@ ffmpeg -v quiet -i "1080p.mp4" -vf scale=8:8 -c:v rawvideo -pix_fmt gray -f rawv
 gcc convert.c -o c.out && ./c.out
 python run.py # python3
 ```
+
+##### sound waveform
+
+```sh
+python wave.py # python3
+```

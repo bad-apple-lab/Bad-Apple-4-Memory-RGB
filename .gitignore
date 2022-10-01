@@ -23,13 +23,15 @@
 *.webp
 *.bmp
 
-*.gif
+# audio
+*.mp3
+*.wav
+*.ogg
 
+*.gif
 *.bin
 asus.*
 
 archive/
 */temp/
 tempCodeRunnerFile.*
-
-!dependencies/**
