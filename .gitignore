@@ -23,6 +23,8 @@
 *.webp
 *.bmp
 
+*.gif
+
 *.bin
 asus.*
 
