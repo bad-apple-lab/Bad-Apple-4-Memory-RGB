@@ -1,4 +1,4 @@
-import time
+# import time
 import queue
 import threading
 import numpy as np
@@ -10,6 +10,7 @@ FRAME_SIZE = 512
 FORMAT = pyaudio.paInt16
 CHANNELS = 1
 RATE = 22050
+# 16000 22050 44100 48000
 split_nums = [-4096, -512, -64, -8, 8, 64, 512, 4096, 2147483647]
 
 auraSdk = win32com.client.Dispatch("aura.sdk.1")
@@ -31,9 +32,9 @@ def mem4(l: list(), slp: int = 0.1) -> None:
     #     assert(0 <= i <= 8)
     for i in range(4):
         for j in range(l[i]):
-            mem[i].Lights(j).color = 0xff0000
+            mem[i].Lights(j).color = 0xff00ff
         for j in range(l[i], 8):
-            mem[i].Lights(j).color = 0x0000ff
+            mem[i].Lights(j).color = 0x00ff00
         mem[i].Apply()
     # time.sleep(slp)
 
@@ -49,6 +50,7 @@ def audio_callback(in_data, frame_count, time_info, status):
     ad_rdy_ev.set()
     return (None, pyaudio.paContinue)
 
+# Settings-Privay-Microphone: Allow desktop apps to access your microphone
 
 stream = p.open(format=FORMAT,
                 channels=CHANNELS,
@@ -61,6 +63,8 @@ stream = p.open(format=FORMAT,
 
 print("start_stream...")
 stream.start_stream()
+
+print("running...")
 
 while stream.is_active():
     ad_rdy_ev.wait()
