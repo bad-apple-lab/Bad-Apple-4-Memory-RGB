@@ -6,6 +6,23 @@ import pyaudio
 import win32com.client
 from scipy import signal
 
+'''
+Before run:
+
+Settings -> Privay -> Microphone:
+1. Change -> On;
+2. Allow desktop apps to access your microphone.
+
+Right click speakers icon -> Sound -> Recording -> Stereo Mix:
+1. Right click -> Enable;
+2. Right click -> Properties -> Listen -> Listen to this device.
+
+Settings -> System -> Sound:
+1. Input -> Choose your input device -> Stereo Mix (Realtek(R) Audio)
+
+***Stereo Mix** can be replaced with one that has the same function.
+'''
+
 FRAME_SIZE = 512
 FORMAT = pyaudio.paInt16
 CHANNELS = 1
@@ -49,8 +66,6 @@ def audio_callback(in_data, frame_count, time_info, status):
     q.put(in_data)
     ad_rdy_ev.set()
     return (None, pyaudio.paContinue)
-
-# Settings-Privay-Microphone: Allow desktop apps to access your microphone
 
 stream = p.open(format=FORMAT,
                 channels=CHANNELS,
